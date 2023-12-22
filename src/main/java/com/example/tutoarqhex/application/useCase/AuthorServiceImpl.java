@@ -15,21 +15,21 @@ public class AuthorServiceImpl implements AuthorIn {
 
     @Override
     public Author addAuthor(Author author) {
-        return authorOut.addAuthor(author);
+        return authorOut.agregarAuthor(author);
     }
 
     @Override
     public Optional<Author> findById(Long id) {
-        return authorOut.findById(id);
+        return authorOut.encontrarId(id);
     }
 
     @Override
     public Author updateAuthor(Author author, Long id) {
-        return authorOut.updateAuthor(author, id);
+        return authorOut.actualizarAuthor(author, id);
     }
 
     @Override
     public Boolean deleteAuthor(Long id) {
-        return authorOut.deleteAuthor(id);
+        return authorOut.eliminarAuthor(id);
     }
 }

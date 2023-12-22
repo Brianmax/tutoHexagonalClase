@@ -5,8 +5,8 @@ import com.example.tutoarqhex.dominio.models.Author;
 import java.util.Optional;
 
 public interface AuthorOut {
-    Author addAuthor(Author author);
-    Optional<Author> findById(Long id);
-    Author updateAuthor(Author author, Long id);
-    Boolean deleteAuthor(Long id);
+    Author agregarAuthor(Author author);
+    Optional<Author> encontrarId(Long id);
+    Author actualizarAuthor(Author author, Long id);
+    Boolean eliminarAuthor(Long id);
 }

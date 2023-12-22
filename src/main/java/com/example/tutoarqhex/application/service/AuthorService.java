@@ -6,7 +6,7 @@ import com.example.tutoarqhex.dominio.ports.in.AuthorIn;
 import java.util.Optional;
 
 public class AuthorService implements AuthorIn {
-    private final AuthorIn authorIn;
+    private final AuthorIn authorIn; // AuthorServiceImpl
 
     public AuthorService(AuthorIn authorIn) {
         this.authorIn = authorIn;
@@ -14,7 +14,7 @@ public class AuthorService implements AuthorIn {
 
     @Override
     public Author addAuthor(Author author) {
-        return authorIn.addAuthor(author);
+        return authorIn.addAuthor(author); // authorServiceImpl.addAuthor()
     }
 
     @Override
