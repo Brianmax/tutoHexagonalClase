@@ -23,7 +23,7 @@ public class AuthorService implements AuthorIn {
     }
 
     @Override
-    public Author updateAuthor(Author author, Long id) {
+    public Optional<Author> updateAuthor(Author author, Long id) {
         return authorIn.updateAuthor(author, id);
     }
 

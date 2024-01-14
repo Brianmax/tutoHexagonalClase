@@ -24,7 +24,7 @@ public class AuthorServiceImpl implements AuthorIn {
     }
 
     @Override
-    public Author updateAuthor(Author author, Long id) {
+    public Optional<Author> updateAuthor(Author author, Long id) {
         return authorOut.actualizarAuthor(author, id);
     }
 

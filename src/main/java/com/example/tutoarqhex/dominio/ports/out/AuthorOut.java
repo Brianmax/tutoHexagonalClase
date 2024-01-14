@@ -7,6 +7,6 @@ import java.util.Optional;
 public interface AuthorOut {
     Author agregarAuthor(Author author);
     Optional<Author> encontrarId(Long id);
-    Author actualizarAuthor(Author author, Long id);
+    Optional<Author> actualizarAuthor(Author author, Long id);
     Boolean eliminarAuthor(Long id);
 }

@@ -18,22 +18,34 @@ public class AuthorJpaRepositoryAdapter implements AuthorOut {
     @Override
     public Author agregarAuthor(Author author) {
         AuthorEntity authorEntity = AuthorEntity.fromModel(author);
-        return authorJpaRepository.save(authorEntity).toDomain();
+        try {
+            authorJpaRepository.save(authorEntity);
+            return authorEntity.toDomain();
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override
     public Optional<Author> encontrarId(Long id) {
-        Optional<AuthorEntity> optionalAuthorEntity = authorJpaRepository.findById(id);
-        if(optionalAuthorEntity.isPresent())
-        {
-            return Optional.of(optionalAuthorEntity.get().toDomain());
-        }
-        return Optional.empty();
+        Optional<AuthorEntity> authorEntity = authorJpaRepository.findById(id);
+        return authorEntity.map(AuthorEntity::toDomain);
     }
 
     @Override
-    public Author actualizarAuthor(Author author, Long id) {
-        return null;
+    public Optional<Author> actualizarAuthor(Author author, Long id) {
+        // verify if it exists
+        Optional<AuthorEntity> authorEntity = authorJpaRepository.findById(id);
+        if (authorEntity.isPresent()) {
+            AuthorEntity authorEntity1 = authorEntity.get();
+            authorEntity1.setName(author.getName());
+            authorEntity1.setLastname(author.getLastname());
+            authorEntity1.setEmail(author.getEmail());
+            authorJpaRepository.save(authorEntity1);
+        }
+        return authorEntity.map(AuthorEntity::toDomain);
     }
 
     @Override
